@@ -1,0 +1,15 @@
+# Here we give the procedure to automatically do collection of data
+artifacts_root : artifacts
+
+
+model_prediction:
+  root_dir: artifacts
+  predict_dir: artifacts/predict
+  ImageNet_model_path: artifacts/models/DogPredictModel.h5
+  Yolov8_model_path: artifacts/models/yolov8n.pt
+  cropped_image_path: artifacts/predict/cropped_image.jpg
+  image_path: artifacts/predict/inputImage.jpg
+
+
+
+
