@@ -17,7 +17,7 @@ Accuracy of 92.6%.
 
 To view the model visit https://colab.research.google.com/drive/1aRtQgHmx8hxa17dZ_MxJKKYT5JUaSw5r?usp=sharing
 
-![Alt text](https://www.google.com/url?sa%253Di%2526url%253Dhttps%253A%252F%252Fblog.roboflow.com%252Fwhat-is-efficientnet%252F%2526psig%253DAOvVaw1HF2qedGPYV0RvxAQD2qeC%2526ust%253D1697091189646000%2526source%253Dimages%2526cd%253Dvfe%2526opi%253D89978449%2526ved%253D0CBEQjRxqFwoTCKjL3L2r7YEDFQAAAAAdAAAAABAT)
+![Alt text](https://lh5.googleusercontent.com/1iAqzYErD-KDbcmvYHcJddwsDI0-LxBUjeatxH6Io0ckR7zcA5hVX0aaBqYw9b3a3TVOonYGiW_j6EeW3s8qCJHdudl8ayg8sol-9XCFW_U45W63l5vzK0DLiqg_ucfWG10YVzq5hwzDPds4CkNM7Og)
 
 ## YOLOv8 
 Model by ultralytics used to detect only the dogs from the image and crop them.
