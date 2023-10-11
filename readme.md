@@ -12,14 +12,17 @@ A backend server made with flask to run the models and do prediction.
 
 ## DogBreed classifier model
 
-![Alt text](https://miro.medium.com/v2/resize%253Afit%253A1400/format%253Awebp/1%252AInu_zWY2VSZulVuat0Hbwg.png)
+This model is a improvised model of EfficientNet-B0 model with total 240 layers of Convolutional , maxpooling and padding layers. The total params trained are 6,737,352.
+Accuracy of 92.6%.
+
+To view the model visit https://colab.research.google.com/drive/1aRtQgHmx8hxa17dZ_MxJKKYT5JUaSw5r?usp=sharing
 
 ![Alt text](https://www.google.com/url?sa%253Di%2526url%253Dhttps%253A%252F%252Fblog.roboflow.com%252Fwhat-is-efficientnet%252F%2526psig%253DAOvVaw1HF2qedGPYV0RvxAQD2qeC%2526ust%253D1697091189646000%2526source%253Dimages%2526cd%253Dvfe%2526opi%253D89978449%2526ved%253D0CBEQjRxqFwoTCKjL3L2r7YEDFQAAAAAdAAAAABAT)
 
 ## YOLOv8 
 Model by ultralytics used to detect only the dogs from the image and crop them.
 
-![Alt text](https://www.google.com/url?sa%253Di%2526url%253Dhttps%253A%252F%252Fopenmmlab.medium.com%252Fdive-into-yolov8-how-does-this-state-of-the-art-model-work-10f18f74bab1%2526psig%253DAOvVaw2w--EGowLN4q-xYlP5LqkC%2526ust%253D1697091014100000%2526source%253Dimages%2526cd%253Dvfe%2526opi%253D89978449%2526ved%253D0CBEQjRxqFwoTCJDPieqq7YEDFQAAAAAdAAAAABAE)
+![Alt text](https://miro.medium.com/v2/resize:fit:1400/0*IF_Sg4ehKMWR-_Dt)
 
 To learn more about this https://github.com/ultralytics/ultralytics
 
