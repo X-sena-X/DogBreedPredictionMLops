@@ -19,7 +19,7 @@ A backend server made with flask to run the models and do prediction.
 ## YOLOv8 
 Model by ultralytics used to detect only the dogs from the image and crop them.
 
-![Alt text](https://www.google.com/url?sa%253Di%2526url%253Dhttps%253A%252F%252Fopenmmlab.medium.com%252Fdive-into-yolov8-how-does-this-state-of-the-art-model-work-10f18f74bab1%2526psig%253DAOvVaw2w--EGowLN4q-xYlP5LqkC%2526ust%253D1697091014100000%2526source%253Dimages%2526cd%253Dvfe%2526opi%253D89978449%2526ved%253D0CBEQjRxqFwoTCJDPieqq7YEDFQAAAAAdAAAAABAE)
+![Alt text](https://miro.medium.com/v2/resize:fit:1400/0*IF_Sg4ehKMWR-_Dt)
 
 To learn more about this https://github.com/ultralytics/ultralytics
 
