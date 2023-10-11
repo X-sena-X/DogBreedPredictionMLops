@@ -1,16 +1,7 @@
-import {React,useState} from "react";
-import axios from 'axios'
-import * as z from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import {
-  Form,
-  FormControl,
-  FormDescription,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
+import { React, useState } from "react";
+import { Loader2 } from "lucide-react"
+
+
 import {
   Card,
   CardContent,
@@ -20,39 +11,32 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Label } from "@radix-ui/react-label";
-const MAX_IMAGE_SIZE = 5 * 1024 * 1024;
-const ACCEPTED_IMAGE_TYPES = ["image/jpeg", "image/jpg", "image/png"];
 
-const ImageFormSchema = z.object({
-  image: z
-    .any()
-    .refine(val => val.length > 0, "File is required")
-});
 
 export default function Home() {
-  const [flag,setFlag] = useState(false)
-  const [image,setImage ] = useState("")
-  const [response,setResponse] = useState('');
-  const [sendimage,setSendImage] = useState();
+  const [flag, setFlag] = useState(true)
+  const [image, setImage] = useState("")
+  const [response, setResponse] = useState('');
+  const [sendimage, setSendImage] = useState();
 
-  const imageHandler = (e)=>{
+  const imageHandler = (e) => {
     const reader = new FileReader();
-    reader.onload = ()=>{
-      if(reader.readyState === 2){
+    reader.onload = () => {
+      if (reader.readyState === 2) {
         setSendImage(reader.result.substring(22));
         setImage(reader.result);
-        
+
       }
     }
     console.log(sendimage)
     reader.readAsDataURL(e.target.files[0]);
-    
+
   }
 
   const postData = async () => {
+    setFlag(false)
     try {
       const response = await fetch("http://localhost:8080/api/predict", {
         method: "POST",
@@ -64,6 +48,7 @@ export default function Home() {
 
       if (response.ok) {
         const data = await response.json();
+        setFlag(true)
         setResponse(data);
       } else {
         console.error("Failed to send POST request");
@@ -72,12 +57,12 @@ export default function Home() {
       console.error("Error sending POST request", error);
     }
   };
-  
+
   return (
     <div className="w-full h-full flex justify-center items-center flex-col">
-      <h1>Online Dog Breed Classifier</h1>
-      <div className="flex w-4/5 h-4/5">
-        <Card className="w-1/2 bg-white text-black h-auto">
+      <span className=" text-4xl font-bold mt-10">Online Dog Breed Classifier</span>
+      <div className="flex w-4/5 h-4/5 mt-10">
+        <Card className="w-1/2 bg-white text-black h-auto rounded-l-2xl">
           <CardHeader>
             <CardTitle>Upload Image</CardTitle>
             <CardDescription>predict your dog breed in one-click.</CardDescription>
@@ -85,11 +70,11 @@ export default function Home() {
           <CardContent>
             <form>
               <div className="grid w-full items-center gap-4">
-                <div className=" w-4/6 h-56 object-contain">
-                  <img src={image} alt="image"/>
+                <div className=" w-4/6 h-56 object-cover">
+                  <img src={image} alt="image" />
                 </div>
                 <div className="flex flex-col space-y-1.5 text-center">
-                  <Input type="file" placeholder="upload image" accept="image/*" className="w-52" onChange={imageHandler}/>
+                  <Input type="file" placeholder="upload image" accept="image/*" className="w-52" onChange={imageHandler} />
                 </div>
               </div>
             </form>
@@ -98,29 +83,42 @@ export default function Home() {
             <Button className="bg-black text-white hover:bg-gray-600 " onClick={postData}>Predict</Button>
           </CardFooter>
         </Card>
-        <Card className="w-1/2 bg-white text-black h-auto">
+        <Card className="w-1/2 bg-white text-black h-auto rounded-r-2xl">
           <CardHeader>
             <CardTitle>Predict</CardTitle>
             <CardDescription>-----()------</CardDescription>
           </CardHeader>
           <CardContent>
-            
-              <div className="grid w-full items-center gap-4">
-                <div className="flex flex-col space-y-1.5">
 
-                  
-                </div>
+            <div className="grid w-full items-center gap-4">
+              <div className="flex flex-col space-y-1.5">
+                <div className="w-4/6 h-56 flex flex-col">
+                  {flag == true ? (
+                    < div className="mt-14">
+                      <p>{'{'}</p>
+                      <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;breed:&nbsp; {response}</p>
+                      <p>{'}'} </p>
+                    </div>
+                    ) : 
+                    (<>
+                      <Button disabled className="w-full h-full ">
+                        <Loader2 className="w-full h-full animate-spin" />
+                          Processing
+                      </Button>
+                </>)}
               </div>
-            
-          </CardContent>
-          <CardFooter className="flex justify-between">
-            
-          </CardFooter>
-        </Card>
-      </div>
+            </div>
+          </div>
 
+        </CardContent>
+        <CardFooter className="flex justify-between">
 
+        </CardFooter>
+      </Card>
     </div>
+
+
+    </div >
   );
 }
 
